@@ -11,15 +11,11 @@ import com.dsa.mtech.adt.spec.LinkedList;
  */
 public class LinkedListImpl extends LinkedList<Integer>{
 	
-	private int size = 0;
-	
-
 	@Override
 	public void addFirst(Integer data) {
 		Node<Integer> node = new Node<Integer>(data);
 		node.next = first;
 		first = node;
-		size++;
 	}
 
 	@Override
@@ -27,7 +23,6 @@ public class LinkedListImpl extends LinkedList<Integer>{
 		int d = first.data;
 		Node<Integer> newfirst = first.next;
 		first = newfirst;
-		size--;
 		return d;
 	}
 

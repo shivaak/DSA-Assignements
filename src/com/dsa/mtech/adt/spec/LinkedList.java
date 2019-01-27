@@ -48,9 +48,9 @@ public abstract class LinkedList<T> {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		Node current = first;
+		Node<T> current = first;
 		while (current != null) {
-			builder.append(current).append(" ");
+			builder.append(current).append(" - ");
 			current = current.next;
 		}
 		return builder.toString();

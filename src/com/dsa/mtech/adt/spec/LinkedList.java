@@ -38,7 +38,13 @@ public abstract class LinkedList<T> {
 	public abstract void addFirst(T data);
 
 	public abstract T removeFirst();
+	
+	public abstract void add(T data);
+	
+	public abstract void remove();
 
+	public abstract Integer getSize();	
+	
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
@@ -48,6 +54,6 @@ public abstract class LinkedList<T> {
 			current = current.next;
 		}
 		return builder.toString();
-	}	
+	}
 
 }

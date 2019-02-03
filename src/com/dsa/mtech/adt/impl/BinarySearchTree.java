@@ -93,10 +93,18 @@ public class BinarySearchTree implements Tree<Integer>{
 		if(current.right!=null) preOrder(current.right);
 
 	}
+	
+	public void postOrder() {
+		this.postOrder(this.root);
+	}
 
 	@Override
-	public void postOrder(Node<Integer> root) {
-		// TODO Auto-generated method stub
+	public void postOrder(Node<Integer> current) {
+		if(current!=null) {
+			postOrder(current.left);
+			postOrder(current.right);
+			System.out.println(current.data);			
+		}
 
 	}
 

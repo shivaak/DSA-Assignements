@@ -39,19 +39,36 @@ public class BinarySearchTree implements Tree<Integer>{
 	@Override
 	public Node<Integer> remove(Node<Integer> root, Integer data) {
 		return null;
-
+	}
+	
+	public Integer countNodes() {
+		return this.countNodes(this.root);
 	}
 
 	@Override
-	public Integer countNodes(Node<Integer> root) {
-		// TODO Auto-generated method stub
-		return null;
+	public Integer countNodes(Node<Integer> current) {
+		if(current==null) return 0;
+		
+		int nodes = 1;
+		
+		if(current.left!=null)  nodes += countNodes(current.left);
+		if(current.right!=null) nodes += countNodes(current.right);
+		
+		return nodes;
+	}
+	
+	public Integer countLeaf() {
+		return this.countLeaf(this.root);
 	}
 
 	@Override
-	public Integer countLeaf(Node<Integer> root) {
-		// TODO Auto-generated method stub
-		return null;
+	public Integer countLeaf(Node<Integer> current) {
+		if(current==null) return 0;
+		
+		if(current.left == null && current.right == null) 
+			return 1;
+		
+		return countLeaf(current.left) + countLeaf(current.right);
 	}
 
 	@Override

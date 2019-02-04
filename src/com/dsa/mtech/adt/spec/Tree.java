@@ -13,9 +13,9 @@ public interface Tree<T> {
 	
 	public Node<T> remove(Node<T> current, T data);
 	
-	public T countNodes(Node<T> root);
+	public T countNodes(Node<T> current);
 	
-	public T countLeaf(Node<T> root);
+	public T countLeaf(Node<T> current);
 	
 	public Boolean search(Node<T> root, T data);
 	

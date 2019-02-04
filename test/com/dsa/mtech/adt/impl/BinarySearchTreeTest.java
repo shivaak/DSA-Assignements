@@ -5,6 +5,7 @@
 package com.dsa.mtech.adt.impl;
 
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -23,11 +24,14 @@ public class BinarySearchTreeTest {
 		bst.insert(10);
 		bst.insert(2);
 		bst.insert(15);
+		bst.insert(12);
 		bst.insert(18);
 		bst.insert(1);
-		bst.insert(48);
+		/*bst.insert(48);
 		bst.insert(34);
 		bst.insert(37);
+		bst.insert(27);*/
+		
 	}
 
 	@Test
@@ -53,6 +57,16 @@ public class BinarySearchTreeTest {
 	@Test
 	public void testPostOrder() {
 		bst.postOrder();
+	}
+	
+	@Test
+	public void testCountLeaf() {
+		assertEquals(3L,(long)bst.countLeaf());
+	}
+	
+	@Test
+	public void testCountNodes() {
+		assertEquals(10L,(long)bst.countNodes());
 	}
 
 }

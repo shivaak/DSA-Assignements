@@ -17,7 +17,7 @@ public interface Tree<T> {
 	
 	public T countLeaf(Node<T> current);
 	
-	public Boolean search(Node<T> root, T data);
+	public Boolean search(Node<T> current, T data);
 	
 	public void inOrder(Node<T> current);
 	
@@ -31,15 +31,21 @@ public interface Tree<T> {
 	
 	public T findMax(Node<T> root);
 	
-	public T findHeight(Node<T> root);
+	public T findHeight(Node<T> current);
 	
 	public void printAllPaths(Node<T> root);
 	
 	public void printAllLeafs(Node<T> root);
 	
-	public Boolean isBinaryTree(Node<T> root);
+	public Boolean isBinarySearchTree(Node<T> current);
 	
 	public void balanceTheTree(Node<T> root);
+	
+	public String findPathTo(Node<T> root, T data);
+	
+	public T greatestCommonAncestor(Node<T> root, T d1, T d2);
+	
+	public T[] printPostOrder(T[] in, T[] pre); 
 	
 
 }

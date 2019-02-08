@@ -3,6 +3,10 @@
  */
 package com.dsa.mtech.adt.impl;
 
+
+import java.util.LinkedList;
+import java.util.Queue;
+
 import com.dsa.mtech.adt.spec.Node;
 import com.dsa.mtech.adt.spec.Tree;
 
@@ -12,10 +16,13 @@ import com.dsa.mtech.adt.spec.Tree;
  */
 public class BinarySearchTree implements Tree<Integer>{
 
-	private Node<Integer> root;
-
+	public Node<Integer> root;
+	
+	private Queue<Node<Integer>> queue;
+	
 	public BinarySearchTree() {
 		root = null;
+		queue = new LinkedList<Node<Integer>>();
 	}
 
 	public void insert(Integer d) {
@@ -70,11 +77,21 @@ public class BinarySearchTree implements Tree<Integer>{
 		
 		return countLeaf(current.left) + countLeaf(current.right);
 	}
+	
+	public Boolean search(Integer data) {
+		return this.search(this.root,data);
+	}
 
 	@Override
-	public Boolean search(Node<Integer> root, Integer data) {
-		// TODO Auto-generated method stub
-		return null;
+	public Boolean search(Node<Integer> current, Integer data) {
+		if(current==null) return false;
+		
+		if(current.data==data) return true;
+		
+		if(data<=current.data) 
+			return search(current.left,data);
+		else
+			return search(current.right,data);
 	}
 
 	public void inOrder() {
@@ -124,11 +141,22 @@ public class BinarySearchTree implements Tree<Integer>{
 		}
 
 	}
+	
+	public void levelOrder() {
+		this.levelOrder(this.root);
+	}
 
 	@Override
-	public void levelOrder(Node<Integer> root) {
-		// TODO Auto-generated method stub
-
+	public void levelOrder(Node<Integer> current) {
+		if(current==null) return;
+		
+		System.out.print(current.data + " ");
+		if(current.left!=null)queue.add(current.left);
+		if(current.right!=null)queue.add(current.right);
+		
+		Node<Integer> nextNode = queue.remove();
+		
+		levelOrder(nextNode);
 	}
 
 	public Integer findMin() {
@@ -154,11 +182,19 @@ public class BinarySearchTree implements Tree<Integer>{
 		if(root.right!=null) return findMax(root.right);
 		return root.data;
 	}
+	
+	public Integer findHeight() {
+		return findHeight(this.root);
+	}
 
 	@Override
-	public Integer findHeight(Node<Integer> root) {
-		// TODO Auto-generated method stub
-		return null;
+	public Integer findHeight(Node<Integer> current) {
+		if(current==null) return 0;
+		int Lheight = 0;
+		int Rheight = 0;
+		if(current.left!=null) Lheight = findHeight(current.left);
+		if(current.right!=null) Rheight = findHeight(current.right);
+		return Math.max(Lheight, Rheight) + 1;
 	}
 
 	@Override
@@ -172,17 +208,46 @@ public class BinarySearchTree implements Tree<Integer>{
 		// TODO Auto-generated method stub
 
 	}
+	
+	public Boolean isBinarySearchTree() {
+		return this.isBinarySearchTree(this.root);
+	}
 
 	@Override
-	public Boolean isBinaryTree(Node<Integer> root) {
-		// TODO Auto-generated method stub
-		return null;
+	public Boolean isBinarySearchTree(Node<Integer> current) {
+		if(current==null) return true; //NULL is considered as binary tree
+	
+		Boolean result = true;
+		
+		if(current.left!=null && current.left.data>current.data) result = false;
+		if(current.right!=null && current.right.data<=current.data) result = false;
+		
+		return result && isBinarySearchTree(current.left) && isBinarySearchTree(current.right);
 	}
+	
 
 	@Override
 	public void balanceTheTree(Node<Integer> root) {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public String findPathTo(Node<Integer> root, Integer data) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Integer greatestCommonAncestor(Node<Integer> root, Integer d1, Integer d2) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Integer[] printPostOrder(Integer[] in, Integer[] pre) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
